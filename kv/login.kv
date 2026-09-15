@@ -1,0 +1,80 @@
+#:import dp kivy.metrics.dp
+
+<LoginScreen>:
+    name: "login"
+
+    MDBoxLayout:
+        orientation: "vertical"
+        md_bg_color: app.theme_cls.primary_color
+        padding: dp(30)
+        spacing: dp(20)
+
+        Widget:
+            size_hint_y: 0.3
+
+        MDLabel:
+            text: "TezYetkazib"
+            font_style: "H3"
+            bold: True
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(60)
+
+        MDLabel:
+            text: "Kafe va restoranlardan tezkor yetkazib berish"
+            halign: "center"
+            theme_text_color: "Custom"
+            text_color: 1, 1, 1, 0.85
+            size_hint_y: None
+            height: dp(30)
+
+        Widget:
+            size_hint_y: 0.15
+
+        MDCard:
+            orientation: "vertical"
+            padding: dp(20)
+            spacing: dp(15)
+            size_hint: None, None
+            size: dp(320), dp(230)
+            pos_hint: {"center_x": 0.5}
+            radius: [20, 20, 20, 20]
+            elevation: 4
+
+            MDTextField:
+                id: phone_field
+                hint_text: "Telefon raqam"
+                helper_text: "+998 90 123 45 67"
+                helper_text_mode: "on_focus"
+                icon_left: "phone"
+                input_filter: None
+
+            MDTextField:
+                id: code_field
+                hint_text: "SMS kod"
+                icon_left: "message-lock-outline"
+                input_filter: "int"
+                max_text_length: 4
+                opacity: 0
+                disabled: True
+
+            MDLabel:
+                id: info_label
+                text: root.info_text
+                halign: "center"
+                theme_text_color: "Secondary"
+                font_style: "Caption"
+                size_hint_y: None
+                height: dp(40)
+
+            MDRaisedButton:
+                id: action_button
+                text: "SMS yuborish"
+                pos_hint: {"center_x": 0.5}
+                md_bg_color: app.theme_cls.accent_color
+                on_release: root.on_action_button()
+
+        Widget:
+            size_hint_y: 0.3

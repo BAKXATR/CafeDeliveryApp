@@ -1,0 +1,44 @@
+#:import dp kivy.metrics.dp
+
+<CartScreen>:
+    name: "cart"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Savatcha"
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
+
+        ScrollView:
+            MDBoxLayout:
+                id: cart_list
+                orientation: "vertical"
+                spacing: dp(10)
+                padding: dp(10)
+                size_hint_y: None
+                height: self.minimum_height
+
+        MDBoxLayout:
+            orientation: "vertical"
+            size_hint_y: None
+            height: dp(110)
+            padding: dp(15)
+            spacing: dp(10)
+            md_bg_color: 0.96, 0.96, 0.96, 1
+
+            MDLabel:
+                id: total_label
+                text: "Jami: 0 so'm"
+                bold: True
+                font_style: "H6"
+                halign: "center"
+
+            MDRaisedButton:
+                id: checkout_button
+                text: "Buyurtma berish"
+                pos_hint: {"center_x": 0.5}
+                size_hint_x: 0.9
+                md_bg_color: 0.2, 0.6, 0.9, 1
+                on_release: root.go_to_checkout()

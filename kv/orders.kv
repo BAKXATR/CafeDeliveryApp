@@ -1,0 +1,21 @@
+#:import dp kivy.metrics.dp
+
+<OrdersScreen>:
+    name: "orders"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Buyurtmalarim"
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
+
+        ScrollView:
+            MDBoxLayout:
+                id: orders_list
+                orientation: "vertical"
+                spacing: dp(10)
+                padding: dp(10)
+                size_hint_y: None
+                height: self.minimum_height

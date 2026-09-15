@@ -1,0 +1,46 @@
+#:import dp kivy.metrics.dp
+
+<MenuScreen>:
+    name: "menu"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Menyu"
+            elevation: 4
+            left_action_items: [["history", lambda x: root.go_to_orders()]]
+            right_action_items: [["cart-outline", lambda x: root.go_to_cart()]]
+
+        # Savatchadagi mahsulotlar sonini ko'rsatuvchi kichik badge
+        MDBoxLayout:
+            size_hint_y: None
+            height: dp(1)
+            MDLabel:
+                id: cart_badge
+                text: ""
+
+        # Kategoriya tugmalari - gorizontal skroll
+        ScrollView:
+            size_hint_y: None
+            height: dp(50)
+            do_scroll_x: True
+            do_scroll_y: False
+
+            MDBoxLayout:
+                id: categories_box
+                orientation: "horizontal"
+                size_hint_x: None
+                width: self.minimum_width
+                spacing: dp(8)
+                padding: dp(10), dp(6)
+
+        # Taomlar ro'yxati - vertikal skroll
+        ScrollView:
+            MDBoxLayout:
+                id: food_list
+                orientation: "vertical"
+                spacing: dp(10)
+                padding: dp(10)
+                size_hint_y: None
+                height: self.minimum_height

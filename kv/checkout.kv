@@ -1,0 +1,50 @@
+#:import dp kivy.metrics.dp
+
+<CheckoutScreen>:
+    name: "checkout"
+
+    MDBoxLayout:
+        orientation: "vertical"
+
+        MDTopAppBar:
+            title: "Buyurtmani rasmiylashtirish"
+            elevation: 4
+            left_action_items: [["arrow-left", lambda x: root.go_back()]]
+
+        MDBoxLayout:
+            orientation: "vertical"
+            padding: dp(20)
+            spacing: dp(20)
+
+            MDTextField:
+                id: address_field
+                hint_text: "Yetkazib berish manzili"
+                helper_text: "Ko'cha, uy, kvartira raqami"
+                helper_text_mode: "on_focus"
+                icon_left: "map-marker-outline"
+                multiline: True
+
+            MDTextField:
+                id: phone_field
+                hint_text: "Aloqa uchun telefon raqami"
+                icon_left: "phone-outline"
+
+            MDTextField:
+                id: comment_field
+                hint_text: "Kuryerga izoh (ixtiyoriy)"
+                icon_left: "comment-text-outline"
+                multiline: True
+
+            MDLabel:
+                id: total_label
+                text: "To'lov summasi: 0 so'm"
+                bold: True
+                font_style: "H6"
+                halign: "center"
+
+            MDRaisedButton:
+                text: "Buyurtmani tasdiqlash"
+                pos_hint: {"center_x": 0.5}
+                size_hint_x: 0.9
+                md_bg_color: 0.2, 0.7, 0.4, 1
+                on_release: root.confirm_order()
