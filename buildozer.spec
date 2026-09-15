@@ -41,3 +41,6 @@ log_level = 2
 
 # (int) Display warning if root/sudo (0 = False, 1 = True)
 warn_on_root = 1
+
+# (int) Android NDK version to use
+ndk_version = 25b
